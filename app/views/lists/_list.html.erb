@@ -10,7 +10,9 @@
           <p>- <%= bookmark.movie.title %></p>
           <%= image_tag bookmark.movie.poster_url, height: '100', width: '120' %>
           <p><%= bookmark.comment %><p>
+          <% if bookmark.photo.attached? %>
           <%= cl_image_tag bookmark.photo.key, height: 80, width: 100, crop: :fill %>
+          <% end %>
           <%= link_to 'Delete this movie', delete_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},  style: 'color:#FF0000; text-decoration: none;' %>
         </div>
         <% end %>
