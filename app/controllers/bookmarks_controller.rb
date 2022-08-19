@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-  before_action :set_list
+  before_action :set_list, only: %i[new create]
   def new
     @bookmark = Bookmark.new
   end
@@ -15,9 +15,6 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    rescue_from ActiveRecord::RecordNotFound do |exception|
-      redirect_to lists_path, 404, alert: 'Record not found'
-    end
     @bookmark = Bookmark.find(params[:id])
     @list = @bookmark.list
     @bookmark.destroy
