@@ -1,21 +1,11 @@
 <h1>the list</h1>
 
+<p style="color: green"><%= notice %></p>
+
+<%= render @list %>
+
 <div>
-    <p>
-    <strong>Name:</strong>
-    <%= @list.name %>
-   </p>
-   <p>
-    <strong>bookmark:</strong></p>
-     <ul>
-    <%  @list.bookmarks.each do |bookmark|%>
-     <li>
-      <%= bookmark.comment %>
-      <%= bookmark.movie.title %>
-      <%= link_to 'Delete the bookmark', delete_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      </li>
-    <% end %>
-     </ul>
+  <%= link_to "Back to lists", lists_path  %> |  <%= link_to "Add a movie", new_list_bookmark_path(@list.id)  %>
 </div>
 
 <h3>not much but still in the progress<h3>

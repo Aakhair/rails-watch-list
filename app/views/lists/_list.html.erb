@@ -1,0 +1,20 @@
+<div>
+    <p>
+    <strong>Name:</strong>
+    <%= @list.name %>
+   </p>
+      <p>
+        <strong>the movies:</strong></p>
+        <ul>
+       <div style="margin: 5px">
+        <%  @list.bookmarks.each do |bookmark|%>
+          <p><%= bookmark.movie.title %></p>
+        <li>
+          <%= bookmark.comment %>
+          </li>
+          <%= link_to 'Delete this movie', delete_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <% end %>
+       </div>
+        </ul>
+
+</div>
