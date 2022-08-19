@@ -1,18 +1,18 @@
-<div>
     <p>
-    <strong>Name:</strong>
-    <%= @list.name %>
-   </p>
-      <p>
-        <strong>the movies:</strong></p>
+    <strong><%= @list.name %></strong>
+    </p>
+<div style="text-align: center; ">
+        <h3> The movies </h3>
         <ul>
-       <div style="margin: 5px">
+       <div>
         <%  @list.bookmarks.each do |bookmark|%>
-          <p><%= bookmark.movie.title %></p>
-        <li>
-          <%= bookmark.comment %>
-          </li>
-          <%= link_to 'Delete this movie', delete_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <div style="margin: 5px;">
+          <p>- <%= bookmark.movie.title %></p>
+          <%= image_tag bookmark.movie.poster_url, height: '100', width: '120' %>
+          <p><%= bookmark.comment %><p>
+          <%= cl_image_tag bookmark.photo.key, height: 80, width: 100, crop: :fill %>
+          <%= link_to 'Delete this movie', delete_bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},  style: 'color:#FF0000; text-decoration: none;' %>
+        </div>
         <% end %>
        </div>
         </ul>
